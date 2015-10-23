@@ -1,4 +1,5 @@
 #
+import bleach
 # Database access functions for the web forum.
 #
 import psycopg2
@@ -21,10 +22,12 @@ def GetAllPosts():
 
 
 def AddPost(content):
+    cleaned_content = bleach.clean(content, strip=True)
+    bleach.clean('<br>script()</br>')
     DB = psycopg2.connect("dbname=forum")
     c = DB.cursor()
     # c.execute("INSERT INTO posts(content) VALUES ('%s')" % content)
     c.execute("INSERT INTO posts(content) VALUES(%s)",
-              (content,))
+              (cleaned_content,))
     DB.commit()
     DB.close()
