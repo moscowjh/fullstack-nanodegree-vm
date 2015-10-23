@@ -23,11 +23,8 @@ def GetAllPosts():
 def AddPost(content):
     DB = psycopg2.connect("dbname=forum")
     c = DB.cursor()
-    c.execute("INSERT INTO posts(content) VALUES ('%s')" % content)
+    # c.execute("INSERT INTO posts(content) VALUES ('%s')" % content)
+    c.execute("INSERT INTO posts(content) VALUES(%s)",
+              (content,))
     DB.commit()
     DB.close()
-    '''
-    Args:
-      content: The text content of the new post.
-    t = time.strftime('%c', time.localtime())
-    DB.append((t, content)) '''
