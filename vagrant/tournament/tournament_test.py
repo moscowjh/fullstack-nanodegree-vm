@@ -9,7 +9,7 @@ def testDeleteMatches():
     print "1. Old matches can be deleted."
 
 
-def testDelete():
+"""def testDelete():
     deleteMatches()
     deletePlayers()
     print "2. Player records can be deleted."
@@ -135,5 +135,3 @@ if __name__ == '__main__':
     testReportMatches()
     testPairings()
     print "Success!  All tests pass!"
-
-
