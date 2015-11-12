@@ -7,10 +7,10 @@
 -- these lines here.
 
 \c tournament;
-DROP TABLE IF EXISTS players;
-DROP TABLE IF EXISTS matches;
+DROP TABLE IF EXISTS players CASCADE;
+DROP TABLE IF EXISTS matches CASCADE;
 
-CREATE TABLE players ( id serial primary key,name text);
+CREATE TABLE players (id serial primary key, name text);
 
 CREATE TABLE matches (
   id serial primary key,
@@ -29,3 +29,8 @@ INSERT INTO players VALUES (default,'Keith');
 INSERT INTO players VALUES (default,'Brian');
 INSERT INTO players VALUES (default,'Bill');
 INSERT INTO players VALUES (default,'Charlie');
+
+INSERT INTO matches VALUES (default,5,1);
+INSERT INTO matches VALUES (default,6,2);
+INSERT INTO matches VALUES (default,3,8);
+INSERT INTO matches VALUES (default,4,9);

@@ -13,17 +13,22 @@ def connect():
 
 def deleteMatches():
     """Remove all the match records from the database."""
+    conn = connect()
+    c = conn.cursor()
+    c.execute("DELETE FROM matches;")
+    conn.commit()
+    conn.close()
 
 
-def deletePlayers():
+# def deletePlayers():
     """Remove all the player records from the database."""
 
 
-def countPlayers():
+# def countPlayers():
     """Returns the number of players currently registered."""
 
 
-def registerPlayer(name):
+# def registerPlayer(name):
     """Adds a player to the tournament database.
 
     The database assigns a unique serial id number for the player.  (This
@@ -34,11 +39,11 @@ def registerPlayer(name):
     """
 
 
-def playerStandings():
+# def playerStandings():
     """Returns a list of the players and their win records, sorted by wins.
 
-    The first entry in the list should be the player in first place, or a player
-    tied for first place if there is currently a tie.
+    The first entry in the list should be the player in first place, or a \
+    player tied for first place if there is currently a tie.
 
     Returns:
       A list of tuples, each of which contains (id, name, wins, matches):
@@ -49,7 +54,7 @@ def playerStandings():
     """
 
 
-def reportMatch(winner, loser):
+# def reportMatch(winner, loser):
     """Records the outcome of a single match between two players.
 
     Args:
@@ -58,7 +63,7 @@ def reportMatch(winner, loser):
     """
 
 
-def swissPairings():
+# def swissPairings():
     """Returns a list of pairs of players for the next round of a match.
 
     Assuming that there are an even number of players registered, each player
