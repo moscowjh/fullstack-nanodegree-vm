@@ -10,13 +10,13 @@ def testDeleteMatches():
     print "1. Old matches can be deleted."
 
 
-"""def testDelete():
+def testDelete():
     deleteMatches()
     deletePlayers()
     print "2. Player records can be deleted."
 
 
-def testCount():
+"""def testCount():
     deleteMatches()
     deletePlayers()
     c = countPlayers()
@@ -128,8 +128,8 @@ def testPairings():
 
 if __name__ == '__main__':
     testDeleteMatches()
-    """testDelete()
-    testCount()
+    testDelete()
+    """testCount()
     testRegister()
     testRegisterCountDelete()
     testStandingsBeforeMatches()
