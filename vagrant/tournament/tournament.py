@@ -29,19 +29,31 @@ def deletePlayers():
     conn.close()
 
 
-# def countPlayers():
-"""Returns the number of players currently registered."""
+def countPlayers():
+    """Returns the number of players currently registered."""
+    conn = connect()
+    c = conn.cursor()
+    c.execute("SELECT count(*) FROM players;")
+    count = c.fetchone()[0]
+    """convert_count = str(count)
+    print "There are " + convert_count + " players registered."""
+    return count
+    conn.close()
 
 
-# def registerPlayer(name):
-"""Adds a player to the tournament database.
+def registerPlayer(name):
+    """Adds a player to the tournament database.
 
     The database assigns a unique serial id number for the player.  (This
     should be handled by your SQL database schema, not in your Python code.)
 
     Args:
-      name: the player's full name (need not be unique).
-    """
+      name: the player's full name datatype = text (need not be unique)."""
+    conn = connect()
+    c = conn.cursor()
+    c.execute("INSERT INTO players(name) VALUES (%s)", (name,))
+    conn.commit()
+    conn.close()
 
 
 # def playerStandings():

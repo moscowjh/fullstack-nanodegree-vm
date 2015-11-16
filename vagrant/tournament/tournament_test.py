@@ -16,7 +16,7 @@ def testDelete():
     print "2. Player records can be deleted."
 
 
-"""def testCount():
+def testCount():
     deleteMatches()
     deletePlayers()
     c = countPlayers()
@@ -39,7 +39,7 @@ def testRegister():
     print "4. After registering a player, countPlayers() returns 1."
 
 
-def testRegisterCountDelete():
+"""def testRegisterCountDelete():
     deleteMatches()
     deletePlayers()
     registerPlayer("Markov Chaney")
@@ -129,9 +129,9 @@ def testPairings():
 if __name__ == '__main__':
     testDeleteMatches()
     testDelete()
-    """testCount()
+    testCount()
     testRegister()
-    testRegisterCountDelete()
+    """testRegisterCountDelete()
     testStandingsBeforeMatches()
     testReportMatches()
     testPairings()
