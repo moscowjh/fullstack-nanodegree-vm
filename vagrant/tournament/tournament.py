@@ -56,8 +56,8 @@ def registerPlayer(name):
     conn.close()
 
 
-# def playerStandings():
-"""Returns a list of the players and their win records, sorted by wins.
+def playerStandings():
+    """Returns a list of the players and their win records, sorted by wins.
 
     The first entry in the list should be the player in first place, or a \
     player tied for first place if there is currently a tie.
@@ -68,17 +68,30 @@ def registerPlayer(name):
         name: the player's full name (as registered)
         wins: the number of matches the player has won
         matches: the number of matches the player has played
+        """
+    conn = connect()
+    c = conn.cursor()
+    c.execute("SELECT * FROM standings2;")
+    standings = c.fetchall()
+    return standings
+    conn.close()
+
+print playerStandings()
+
+
+def reportMatch(winner, loser):
+    """Records the outcome of a single match between two players.
+
+       Args:
+          winner:  the id number of the player who won
+          loser:  the id number of the player who lost
     """
-
-
-# def reportMatch(winner, loser):
-"""Records the outcome of a single match between two players.
-
-    Args:
-      winner:  the id number of the player who won
-      loser:  the id number of the player who lost
-    """
-
+    conn = connect()
+    c = conn.cursor()
+    c.execute("INSERT INTO matches (winner, loser) VALUES (%s, %s)", (winner,
+              loser,))
+    conn.commit()
+    conn.close()
 
 # def swissPairings():
 """Returns a list of pairs of players for the next round of a match.

@@ -57,7 +57,7 @@ def testRegisterCountDelete():
     print "5. Players can be registered and deleted."
 
 
-"""def testStandingsBeforeMatches():
+def testStandingsBeforeMatches():
     deleteMatches()
     deletePlayers()
     registerPlayer("Melpomene Murray")
@@ -102,7 +102,7 @@ def testReportMatches():
     print "7. After a match, players have updated standings."
 
 
-def testPairings():
+"""def testPairings():
     deleteMatches()
     deletePlayers()
     registerPlayer("Twilight Sparkle")
@@ -132,7 +132,7 @@ if __name__ == '__main__':
     testCount()
     testRegister()
     testRegisterCountDelete()
-    """testStandingsBeforeMatches()
+    testStandingsBeforeMatches()
     testReportMatches()
-    testPairings()
+    """testPairings()
     print "Success!  All tests pass!"""
