@@ -21,23 +21,23 @@ CREATE TABLE matches (
 );
 
 CREATE VIEW win_count AS
-    SELECT players.id, name, count(*) as wins
-    FROM players JOIN matches
-    ON players.id = matches.winner
-    GROUP BY players.id
+    SELECT winner, count(*) as wins
+    FROM matches, players WHERE players.id = matches.winner
+    GROUP BY winner
     ORDER BY wins DESC;
 
 CREATE VIEW matches_played AS
     SELECT players.id, name, count(*) AS matches
-    FROM players JOIN matches
-    ON players.id = matches.winner OR players.id = matches.loser
+    FROM matches, players
+    WHERE players.id = matches.winner OR players.id = matches.loser
     GROUP BY players.id
     ORDER BY matches DESC;
 
 CREATE VIEW standings AS
-    SELECT matches_played.id, matches_played.name, wins, matches
-    FROM win_count RIGHT JOIN matches_played
-    ON win_count.id = matches_played.id
+    SELECT matches_played.id, matches_played.name, COALESCE (win_count.wins,0)
+    AS wins, matches_played.matches
+    FROM matches_played LEFT JOIN win_count
+    ON matches_played.id = win_count.winner OR wins=0
     ORDER BY wins DESC;
 
 CREATE VIEW standings2 AS
