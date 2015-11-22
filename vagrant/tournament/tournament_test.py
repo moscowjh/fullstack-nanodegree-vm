@@ -102,7 +102,7 @@ def testReportMatches():
     print "7. After a match, players have updated standings."
 
 
-"""def testPairings():
+def testPairings():
     deleteMatches()
     deletePlayers()
     registerPlayer("Twilight Sparkle")
@@ -134,5 +134,5 @@ if __name__ == '__main__':
     testRegisterCountDelete()
     testStandingsBeforeMatches()
     testReportMatches()
-    """testPairings()
+    testPairings()
     print "Success!  All tests pass!"""

@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 #
 # tournament.py -- implementation of a Swiss-system tournament
-#
+# imports the PostgreSQL psycopg 2 libraries and defines functions
+# functions are called in another program `tournament_test.py`
 
 import psycopg2
 
@@ -71,12 +72,10 @@ def playerStandings():
         """
     conn = connect()
     c = conn.cursor()
-    c.execute("SELECT * FROM standings2;")
+    c.execute("SELECT * FROM standings;")
     standings = c.fetchall()
     return standings
     conn.close()
-
-print playerStandings()
 
 
 def reportMatch(winner, loser):
@@ -93,8 +92,9 @@ def reportMatch(winner, loser):
     conn.commit()
     conn.close()
 
-# def swissPairings():
-"""Returns a list of pairs of players for the next round of a match.
+
+def swissPairings():
+    """Returns a list of pairs of players for the next round of a match.
 
     Assuming that there are an even number of players registered, each player
     appears exactly once in the pairings.  Each player is paired with another
@@ -108,3 +108,9 @@ def reportMatch(winner, loser):
         id2: the second player's unique id
         name2: the second player's name
     """
+    conn = connect()
+    c = conn.cursor()
+    c.execute("SELECT * FROM pairings;")
+    swiss_pairings = c.fetchall()
+    return swiss_pairings
+    conn.close()
